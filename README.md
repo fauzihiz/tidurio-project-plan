@@ -12,12 +12,10 @@ Repositori ini digunakan sebagai **simulasi kontribusi kolaboratif** anggota tim
 ```
 📦 root
 ├─ 📁 sections/              ← folder berisi bagian dokumen per anggota
-│  ├─ ringkasan.html         ← oleh Chandra
-│  ├─ cakupan.html           ← oleh Alvin
-│  ├─ peran.html             ← oleh Fauzi
-│  ├─ jadwal.html            ← oleh Dimas
-│  ├─ tools.html             ← tambahan (opsional)
-│  └─ risiko.html            ← tambahan (opsional)
+│  ├─ ringkasan.js         ← oleh Chandra
+│  ├─ cakupan.js           ← oleh Alvin
+│  ├─ peran.js             ← oleh Dimas
+│  ├─ jadwal.js            ← oleh Fauzi
 ├─ 📄 index.html             ← file utama yang me-render semua section
 ├─ 📄 style.css              ← styling UI
 └─ 📄 README.md             ← dokumentasi ini
@@ -27,8 +25,8 @@ Repositori ini digunakan sebagai **simulasi kontribusi kolaboratif** anggota tim
 
 1. Fork repository ini (atau clone jika latihan lokal)
 2. Buat file sesuai tugasmu di folder `sections/`
-3. Jalankan lokal dengan buka `index.html`
-4. Isi konten HTML sesuai bagianmu
+3. Jalankan lokal lalu buat file .js dengan nama yang sesuai diarahkan
+4. Isi konten file .js tersebut dengan yang sudah diberikan dengan pastebin
 5. Commit dengan pesan seperti:
 
    ```bash
@@ -42,7 +40,7 @@ Repositori ini digunakan sebagai **simulasi kontribusi kolaboratif** anggota tim
    - Bagian dokumen muncul di halaman
 
 ## Preview Web
-Akan tersedia di GitHub Pages setelah `main` branch diperbarui.
+[Untuk preview hasilnya bisa dilihat disini.](https://fauzihiz.github.io/tidurio-project-plan/)
 
 ## Contoh Pull Request
 > `feat: add Ringkasan Eksekutif oleh Chandra`
