@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECT PLAN - Tidur.io</title>
+  <style>
+    /* style.css */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    .project-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .info-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #3498db;
+      transition: transform 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .info-card h3 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .info-card p {
+      color: #666;
+      font-weight: 500;
+    }
+
+    .team-section {
+      background: #ecf0f1;
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 2rem 0;
+    }
+
+    .team-section h2 {
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .member-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .member-id {
+      font-weight: bold;
+      color: #3498db;
+      font-size: 0.9rem;
+    }
+
+    .member-name {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+      color: #2c3e50;
+    }
+
+    .member-status {
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    .status-non-aktif {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .status-aktif {
+      background: #27ae60;
+      color: white;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #ecf0f1;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #3498db, #2980b9);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .loading-text {
+      text-align: center;
+      color: #666;
+      font-style: italic;
+      margin: 2rem 0;
+    }
+
+    .content-section {
+      margin: 2rem 0;
+      padding: 2rem;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border: 1px solid #e9ecef;
+      display: none;
+    }
+
+    .content-section.visible {
+      display: block;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-section h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #3498db;
+    }
+
+    .content-section ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .content-section p {
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .content-section table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .content-section th,
+    .content-section td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    .content-section th {
+      background: #3498db;
+      color: white;
+      font-weight: bold;
+    }
+
+    .content-section tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+
+    .content-section tr:hover {
+      background: #e8f4f8;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .header p {
+        font-size: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+      }
+
+      .project-info {
+        grid-template-columns: 1fr;
+      }
+
+      .content-section table {
+        font-size: 0.9rem;
+      }
+
+      .content-section th,
+      .content-section td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>PROJECT PLAN</h1>
+      <p>Dicoding Bootcamp - Capstone Project</p>
+    </div>
+
+    <div class="content">
+      <div class="project-info">
+        <div class="info-card">
+          <h3>ID Tim Capstone Project</h3>
+          <p>DB6-PG010</p>
+        </div>
+        <div class="info-card">
+          <h3>Judul Proyek</h3>
+          <p>Tidur.io - A gamified sleep tracker</p>
+        </div>
+        <div class="info-card">
+          <h3>Tema yang dipilih</h3>
+          <p>Inovasi Teknologi untuk Kesehatan dan Kesejahteraan Masyarakat</p>
+        </div>
+        <div class="info-card">
+          <h3>Learning Path</h3>
+          <p>React & Back-End Developer</p>
+        </div>
+      </div>
+
+      <div class="team-section">
+        <h2>List Anggota Tim</h2>
+        <div class="team-members">
+          <div class="member-card">
+            <div class="member-id">B25B6R065</div>
+            <div class="member-name">Chandra Kusuma Raharjo</div>
+            <span class="member-status status-non-aktif" id="status-chandra">Non Aktif</span>
+          </div>
+          <div class="member-card">
+            <div class="member-id">B25B6R068</div>
+            <div class="member-name">Alvin Luqman Hakim</div>
+            <span class="member-status status-non-aktif" id="status-alvin">Non Aktif</span>
+          </div>
+          <div class="member-card">
+            <div class="member-id">B25B6R073</div>
+            <div class="member-name">Fauzi Hizbullah</div>
+            <span class="member-status status-non-aktif" id="status-fauzi">Non Aktif</span>
+          </div>
+          <div class="member-card">
+            <div class="member-id">B25B6R034</div>
+            <div class="member-name">Dimas Aji Nugroho</div>
+            <span class="member-status status-non-aktif" id="status-dimas">Non Aktif</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+      </div>
+      <div class="loading-text">Menunggu kontribusi dari anggota tim...</div>
+
+      <!-- Content sections - akan muncul ketika file JS dimuat -->
+      <div id="ringkasan-eksekutif" class="content-section">
+        <h2>Ringkasan Eksekutif</h2>
+        <div id="ringkasan-content"></div>
+      </div>
+
+      <div id="cakupan-proyek" class="content-section">
+        <h2>Cakupan Proyek</h2>
+        <div id="cakupan-content"></div>
+      </div>
+
+      <div id="pembagian-peran" class="content-section">
+        <h2>Pembagian Peran</h2>
+        <div id="peran-content"></div>
+      </div>
+
+      <div id="jadwal-pengerjaan" class="content-section">
+        <h2>Jadwal Pengerjaan</h2>
+        <div id="jadwal-content"></div>
+      </div>
+
+      <div id="sumber-daya" class="content-section">
+        <h2>Sumber Daya & Tools</h2>
+        <div id="sumber-content"></div>
+      </div>
+
+      <div id="manajemen-risiko" class="content-section">
+        <h2>Manajemen Risiko</h2>
+        <div id="risiko-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Global functions yang bisa dipanggil dari file JS eksternal
+    function activateMember(memberId) {
+      const statusElement = document.getElementById('status-' + memberId);
+      if (statusElement) {
+        statusElement.textContent = 'Aktif';
+        statusElement.className = 'member-status status-aktif';
+        updateProgress();
+      }
+    }
+
+    function showSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.classList.add('visible');
+        updateProgress();
+      }
+    }
+
+    function updateProgress() {
+      const activeMembers = document.querySelectorAll('.status-aktif').length;
+      const visibleSections = document.querySelectorAll('.content-section.visible').length;
+      const totalProgress = (activeMembers * 12.5) + (visibleSections * 12.5);
+
+      document.getElementById('progress').style.width = Math.min(totalProgress, 100) + '%';
+
+      if (totalProgress >= 100) {
+        const status = document.querySelector('.loading-text');
+        status.textContent = 'Project Plan Lengkap! 🎉';
+        status.style.color = '#27ae60';
+        status.style.fontWeight = 'bold';
+      }
+    }
+
+    // Initialize progress on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateProgress();
+    });
+  </script>
+
+  <!-- Load JS modules - file ini akan di-load ketika anggota tim mengirim file -->
+  <script src="./sections/ringkasan.js"></script>
+  <script src="./sections/cakupan.js"></script>
+  <script src="./sections/peran.js"></script>
+  <script src="./sections/jadwal.js"></script>
+  <script src="./sections/tools.js"></script>
+  <script src="./sections/risiko.js"></script>
+</body>
+</html>
