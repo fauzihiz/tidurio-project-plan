@@ -375,11 +375,22 @@
     }
 
     function updateProgress() {
-      const activeMembers = document.querySelectorAll('.status-aktif').length;
-      const visibleSections = document.querySelectorAll('.content-section.visible').length;
-      const totalProgress = (activeMembers * 12.5) + (visibleSections * 12.5);
+      const totalMembers = document.querySelectorAll('.member-status').length;
 
-      document.getElementById('progress').style.width = Math.min(totalProgress, 100) + '%';
+      // Hitung hanya member aktif yang unik
+      const activeMembers = new Set(
+        Array.from(document.querySelectorAll('.status-aktif')).map(el => el.id)
+      ).size;
+
+      // Hitung maksimal 1 section per member (misal 4 anggota = 4 section sah dihitung)
+      const visibleSections = document.querySelectorAll('.content-section.visible');
+      const countedSections = Math.min(visibleSections.length, activeMembers); // batasi agar tak melebihi member aktif
+
+      const maxProgress = totalMembers * 2; // 1 dari aktif, 1 dari file (section)
+      const completedProgress = activeMembers + countedSections;
+
+      const totalProgress = (completedProgress / maxProgress) * 100;
+      document.getElementById('progress').style.width = totalProgress + '%';
 
       if (totalProgress >= 100) {
         const status = document.querySelector('.loading-text');
@@ -388,6 +399,7 @@
         status.style.fontWeight = 'bold';
       }
     }
+
 
     // Initialize progress on page load
     document.addEventListener('DOMContentLoaded', function() {
